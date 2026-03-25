@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.font-arabic {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+:root {
+  color-scheme: dark light;
+  --primary: #6366f1;
+  --secondary: #a855f7;
+  --accent: #ec4899;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  @apply bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 min-h-screen overflow-x-hidden transition-colors duration-500;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  @apply bg-slate-200/50 dark:bg-white/5 backdrop-blur-md border border-slate-300/30 dark:border-white/10;
+}
+
+.glass-card {
+  @apply glass rounded-3xl shadow-xl dark:shadow-glass hover:bg-slate-300/60 dark:hover:bg-white/10 transition-all duration-500;
+}
+
+/* Glow Effects */
+.glow {
+  @apply shadow-[0_0_20px_rgba(255,255,255,0.1)];
+}
+
+.glow-primary {
+  @apply shadow-[0_0_30px_rgba(99,102,241,0.3)];
+}
+
+.glow-accent {
+  @apply shadow-[0_0_30px_rgba(236,72,153,0.3)];
+}
+
+/* 3D Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.glow-rose {
+  @apply shadow-[0_0_30px_rgba(244,63,94,0.3)];
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-12 {
+  transform: rotateY(12deg);
+}
+
+.hover-lift {
+  @apply transition-transform duration-500 hover:-translate-y-3 hover:scale-[1.02];
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-400/20 dark:bg-slate-700/50 rounded-full hover:bg-primary/50 transition-colors;
+}
+
+* {
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+.animate-soft-float {
+  animation: soft-float 6s ease-in-out infinite;
+}
+
+.ease-premium {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-soft-float, .gpu-accelerated {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
