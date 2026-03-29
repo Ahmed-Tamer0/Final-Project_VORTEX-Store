@@ -17,12 +17,37 @@ export const ProductDetail = () => {
   const { showToast } = useToast();
   const [quantity, setQuantity] = useState(1);
 
-  const product = useMemo(() => products.find(p => p.id === parseInt(id)), [id]);
+  // Ensure ID is handled as a number and add defensive check
+  const product = useMemo(() => {
+    if (!id) return null;
+    const numericId = parseInt(id);
+    return products.find(p => p.id === numericId || p.id === id);
+  }, [id]);
+
   const relatedProducts = useMemo(() => 
-    products.filter(p => p.category === product?.category && p.id !== product?.id).slice(0, 4)
+    product ? products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4) : []
   , [product]);
 
-  if (!product) return <div className="pt-40 text-center font-black uppercase tracking-widest">Protocol Not Found</div>;
+  if (!product) {
+    return (
+      <div className="min-h-[70vh] flex flex-col items-center justify-center p-8 text-center space-y-8">
+        <motion.div
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           className="w-24 h-24 glass rounded-[2rem] flex items-center justify-center text-primary border-primary/20 bg-primary/5 shadow-2xl glow-primary"
+        >
+          <Globe size={40} className="animate-pulse" />
+        </motion.div>
+        <div className="space-y-4">
+          <h2 className="text-4xl font-black italic tracking-tighter uppercase">Protocol Not Found</h2>
+          <p className="text-slate-500 font-medium max-w-xs mx-auto text-sm uppercase tracking-widest">The requested artifact ID {id} does not exist in the current sector.</p>
+        </div>
+        <Link to="/products">
+          <Button variant="primary" className="px-10 py-4 text-[10px] font-black tracking-[0.3em] uppercase">Return to Catalog</Button>
+        </Link>
+      </div>
+    );
+  }
 
   const handleAddToCart = () => {
     for(let i = 0; i < quantity; i++) {

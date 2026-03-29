@@ -6,8 +6,16 @@ export const PageLoader = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(false), 2000);
-    return () => clearTimeout(timer);
+    // Shorter timeout for better perceived performance
+    const timer = setTimeout(() => setIsVisible(false), 1500);
+    
+    // Safety: ensure it fades out even if component stays mounted
+    const backupTimer = setTimeout(() => setIsVisible(false), 3000);
+    
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(backupTimer);
+    };
   }, []);
 
   return (
