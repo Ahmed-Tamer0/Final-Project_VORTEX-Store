@@ -51,6 +51,8 @@ export const ProductCard = memo(({ product, viewMode = 'grid' }) => {
               loading="lazy"
               decoding="async"
               className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 drop-shadow-2xl"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
           <div className="flex-1 space-y-4 text-center sm:text-left">
@@ -114,6 +116,8 @@ export const ProductCard = memo(({ product, viewMode = 'grid' }) => {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700 drop-shadow-2xl"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
           />
           
           <div className="absolute top-4 right-4 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">

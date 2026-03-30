@@ -80,6 +80,8 @@ export const ProductDetail = () => {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 group-hover:scale-105 transition-transform duration-700"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
           />
           <div className="absolute top-8 right-8 z-20">
              <button 

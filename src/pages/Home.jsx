@@ -75,6 +75,8 @@ export const Home = () => {
                 src="/images/samsung-removebg-preview.png" 
                 alt="Featured" 
                 className="w-full h-full object-contain drop-shadow-2xl" 
+                draggable="false"
+                onContextMenu={(e) => e.preventDefault()}
               />
               <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl shadow-3d border-white/20">
                 <p className="text-xs font-black text-slate-400 tracking-widest mb-1 uppercase">NEW ARRIVAL</p>

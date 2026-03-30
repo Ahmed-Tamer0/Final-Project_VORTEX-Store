@@ -180,6 +180,8 @@ export const Checkout = () => {
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform"
+                      draggable="false"
+                      onContextMenu={(e) => e.preventDefault()}
                     />
                   </div>
                   <div className="flex-1">

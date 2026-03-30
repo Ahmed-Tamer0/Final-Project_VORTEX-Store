@@ -104,6 +104,8 @@ export const About = () => {
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000 mix-blend-luminosity group-hover:mix-blend-normal" 
+                  draggable="false"
+                  onContextMenu={(e) => e.preventDefault()}
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                  <div className="absolute w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
